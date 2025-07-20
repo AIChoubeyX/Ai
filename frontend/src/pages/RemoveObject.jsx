@@ -26,7 +26,7 @@ const RemoveObject = () => {
           accept="image/*"
           type="file"
           className="w-full p-2 px-3 mt-2 outline-none text-sm rounded-md border border-gray-300 text-gray-600"
-          reqired
+          required
         />
         <p className="mt-6 text-sm font-medium">Describe object name to remove</p>
         <textarea
@@ -35,7 +35,7 @@ const RemoveObject = () => {
           rows={4}
           className="w-full p-2 px-3 mt-2 outline-none text-sm rounded-md border border-gray-300"
           placeholder="e.g.,car,fan,flower.."
-          reqired
+          required
         />
 
         <p className="text-xs text-gray-500 font-light mt-1">

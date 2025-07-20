@@ -31,7 +31,7 @@ const BlogTitles = () => {
           type="text"
           className="w-full p-2 px-3 mt-2 outline-none text-sm rounded-md border border-gray-300"
           placeholder="The Future of Artificial intelligence is ...."
-          reqired
+          required
         />
         <p className="mt-4 text-sm font-medium">Category</p>
         <div className="mt-3 flex gap-3 flex-wrap sm:max-w-9/11">

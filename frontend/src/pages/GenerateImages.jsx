@@ -39,7 +39,7 @@ const GenerateImages = () => {
           rows={4}
           className="w-full p-2 px-3 mt-2 outline-none text-sm rounded-md border border-gray-300"
           placeholder="Describe your image..."
-          reqired
+          required
         />
         <p className="mt-4 text-sm font-medium">Style</p>
         <div className="mt-3 flex gap-3 flex-wrap sm:max-w-9/11">

@@ -99,8 +99,8 @@ import { clerkClient } from "@clerk/express";
 import axios from "axios";
 import { v2 as cloudinary } from "cloudinary";
 import FormData from "form-data"; // Important for image upload
-import fs from "fs"
-import pdf from "pdf-parse/lib/pdf-parse.js"
+import fs from "fs";
+import pdf from "pdf-parse/lib/pdf-parse.js";
 
 const AI = new OpenAI({
   apiKey: process.env.GEMINI_API_KEY,
@@ -197,8 +197,8 @@ export const removeImageBackground = async (req, res) => {
   try {
     console.log("🖼️ Received generateImage request");
     const { userId } = req.auth();
-    const { image } = req.file;
-    console.log("Prompt:", prompt);
+    const image = req.file;
+    console.log("Image received for background removal:", image);
 
     const { secure_url } = await cloudinary.uploader.upload(image.path, {
       transformation: [
@@ -209,13 +209,11 @@ export const removeImageBackground = async (req, res) => {
       ],
     });
 
-    await sql`INSERT INTO creations (user_id, prompt, content, type) VALUES ($
-    {userId}, 'Remove background from image', ${secure_url}, 'image')`;
+    await sql`INSERT INTO creations (user_id, prompt, content, type) VALUES (
+    ${userId}, 'Remove background from image', ${secure_url}, 'image')`;
 
     res.json({ success: true, content: secure_url });
-
-  } 
-  catch (error) {
+  } catch (error) {
     console.error("❌ Error in removeImageBackground:", error.message);
     if (error.response) {
       console.error("🧾 Axios response error:", error.response.data);
@@ -229,23 +227,20 @@ export const removeImageObject = async (req, res) => {
     console.log("🖼️ Received generateImage request");
     const { userId } = req.auth();
     const { object } = req.body;
-    const { image } = req.file;
-    console.log("Prompt:", prompt);
+    const   image  = req.file;
 
-    const { public_id } = await cloudinary.uploader.upload(image.path)
+    const { public_id } = await cloudinary.uploader.upload(image.path);
 
-    const imageUrl = cloudinary.url(public_id,{
-      transformation : [{effect:`gen_remove:${object}`}],
-      resource_type : 'image'
-    })
+    const imageUrl = cloudinary.url(public_id, {
+      transformation: [{ effect: `gen_remove:${object}` }],
+      resource_type: "image",
+    });
 
-    await sql`INSERT INTO creations (user_id, prompt, content, type) VALUES ($
-    {userId}, ${`Removed ${object} from image`}, ${imageUrl}, 'image')`;
+    await sql`INSERT INTO creations (user_id, prompt, content, type) VALUES (
+    ${userId}, ${`Removed ${object} from image`}, ${imageUrl}, 'image')`;
 
-    res.json({ success: true, content:imageUrl });
-
-  } 
-  catch (error) {
+    res.json({ success: true, content: imageUrl });
+  } catch (error) {
     console.error("❌ Error in removeImageObject:", error.message);
     if (error.response) {
       console.error("🧾 Axios response error:", error.response.data);
@@ -259,21 +254,20 @@ export const resumeReview = async (req, res) => {
     console.log("🖼️ Received generateImage request");
     const { userId } = req.auth();
     const resume = req.file;
-    console.log("Prompt:", prompt);
-    if(resume.size > 5*1024*1024){
+    
+    if (resume.size > 5 * 1024 * 1024) {
       return res.json({
         success: false,
-        message : 'Resume file size exceeds allowed size (5MB).'
-      
-      })
+        message: "Resume file size exceeds allowed size (5MB).",
+      });
     }
-    const dataBuffer = fs.readFileSync(resume.path)
-    const pdfData = await pdf(dataBuffer)
+    const dataBuffer = fs.readFileSync(resume.path);
+    const pdfData = await pdf(dataBuffer);
 
     const prompt = `Review the following resume and provide constructive feedback on its strengths, weeknesses and areas of improvement
-    Resume Conetent:\n\n${pdfData.text}`
+    Resume Conetent:\n\n${pdfData.text}`;
 
-     const response = await AI.chat.completions.create({
+    const response = await AI.chat.completions.create({
       model: "gemini-2.0-flash",
       messages: [{ role: "user", content: prompt }],
       temperature: 0.7,
@@ -282,14 +276,11 @@ export const resumeReview = async (req, res) => {
 
     const content = response.choices[0].message.content;
 
+    await sql`INSERT INTO creations (user_id, prompt, content, type) VALUES (
+    ${userId}, 'Review the uploaded resume', ${content}, 'resume-review')`;
 
-    await sql`INSERT INTO creations (user_id, prompt, content, type) VALUES ($
-    {userId}, 'Review the uploaded resume', ${content}, 'resume-review')`;
-
-    res.json({ success: true, content: content});
-
-  } 
-  catch (error) {
+    res.json({ success: true, content: content });
+  } catch (error) {
     console.error("❌ Error in resumeReview:", error.message);
     if (error.response) {
       console.error("🧾 Axios response error:", error.response.data);

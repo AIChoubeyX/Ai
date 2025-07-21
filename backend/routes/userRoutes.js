@@ -4,8 +4,8 @@ import { getPulishedCreations, getUserCreations, toggleLikeCreation } from '../c
 
 const userRouter = express.Router();
 
-userRouter.get('/get-user-creations ', auth,getUserCreations)
-userRouter.get('/get-published-creations ', auth,getPulishedCreations)
-userRouter.post('/toogle-like-creation ', auth,toggleLikeCreation)
+userRouter.get('/get-user-creations', auth, getUserCreations);
+userRouter.get('/get-published-creations', auth, getPulishedCreations);
+userRouter.post('/toogle-like-creation', auth, toggleLikeCreation);
 
 export default userRouter;

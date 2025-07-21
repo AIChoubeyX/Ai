@@ -17,6 +17,22 @@ export const getUserCreations = async (req, res) => {
   }
 };
 
+// export const getPulishedCreations = async (req, res) => {
+//   try {
+//     const creations =
+//       await sql`SELECT * FROM creations WHERE publish = true ORDER BY created_at DESC`;
+//     res.json({
+//       success: true,
+//       creations,
+//     });
+//   } catch (error) {
+//     res.json({
+//       success: false,
+//       error: message,
+//     });
+//   }
+// };
+
 export const getPulishedCreations = async (req, res) => {
   try {
     const creations =
@@ -26,12 +42,11 @@ export const getPulishedCreations = async (req, res) => {
       creations,
     });
   } catch (error) {
-    res.json({
-      success: false,
-      error: message,
-    });
+    console.error("🔥 Error in getPulishedCreations:", error);
+    next(error); // Pass error to global handler
   }
 };
+
 
 export const toggleLikeCreation = async (req, res) => {
   try {

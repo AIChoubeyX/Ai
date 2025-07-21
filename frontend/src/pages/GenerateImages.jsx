@@ -1,6 +1,11 @@
 import { Image } from "lucide-react";
 import React, { useState } from "react";
 import { Sparkles } from "lucide-react";
+import axios from "axios";
+import { useAuth } from "@clerk/clerk-react";
+import toast from "react-hot-toast";
+
+axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 
 const GenerateImages = () => {
   const imageStyle = [
@@ -17,9 +22,40 @@ const GenerateImages = () => {
   const [selectedStyle, setSelectedStyle] = useState("Realistic");
   const [input, setInput] = useState("");
   const [publish, setPublish] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [content, setContent] = useState("");
+
+  const { getToken } = useAuth();
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
+    try {
+      setLoading(true);
+      const prompt = ` Generate an image of${input} in ${selectedStyle} style`;
+
+      const { data } = await axios.post(
+        "/api/ai/generate-image",
+        { prompt, publish },
+        {
+          headers: {
+            Authorization: `Bearer ${await getToken()}`,
+          },
+        }
+      );
+      if (data.success) {
+        setContent(data.content);
+      } else {
+        // toast.error("data.message");
+        toast.error("No content received from the server.");
+      }
+    } catch (error) {
+      toast.error(
+        error?.response?.data?.message ||
+          error.message ||
+          "Something went wrong"
+      );
+    }
+    setLoading(false);
   };
   return (
     <div className="h-full overflow-y-scroll p-6 flex items-start flex-wrap gap-4 text-slate-700">
@@ -71,10 +107,15 @@ const GenerateImages = () => {
           <p className="text-sm">Make this image public</p>
         </div>
         <button
+          disabled={loading}
           className="w-full flex justify-center items-center gap-2 bg-gradient-to-r from-[#00Ad25] to-[#04FF50] text-white py-2 px-4 mt-6
         text-sm rounded-lg cursor-pointer"
         >
-          <Image className="w-6" />
+          {loading ? (
+            <span className="w-4 h-4 my-1 rounded-full border-2 border-t-transparent animate-spin"></span>
+          ) : (
+            <Image className="w-6" />
+          )}
           Generate image
         </button>
       </form>
@@ -85,12 +126,18 @@ const GenerateImages = () => {
           <Image className="w-5 h-5 text-[#00AD25]" />
           <h1 className="text-xl font-semibold">Generated image</h1>
         </div>
-        <div className="flx-1 flex justify-center items-center">
+        {!content ? (<div className="flx-1 flex justify-center items-center">
           <div className="text-sm flex flex-col items-center gap-5 text-gray-400">
             <Image className="w-9 h-9" />
             <p>Enter a topic and click 'Generate image' to get started</p>
           </div>
-        </div>
+        </div>) : (
+          <div className="mt-3 h-full">
+            <img src={content} alt="image" />
+          </div>
+        )
+        }
+        
       </div>
     </div>
   );

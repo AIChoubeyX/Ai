@@ -246,7 +246,7 @@ const Hero = () => {
       {/* Hero Content */}
       <div className="relative z-10 px-4 sm:px-20 xl:px-32 inline-flex flex-col w-full justify-center text-center">
         {/* Welcome Line */}
-        <div className="mb-4 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-[#aaa] tracking-wide">
+        <div className="mb-4  text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-[#aaa] tracking-wide">
           <TextType
             text={[
               "Welcome to Creonix — Your Gateway to Smarter Content Creation",
@@ -262,7 +262,7 @@ const Hero = () => {
         </div>
 
         {/* Logo */}
-        <div className="flex-shrink-0 mb-4">
+        {/* <div className="flex-shrink-0 mb-4">
           <img
             src={creonixLogo}
             alt="Creonix Logo"
@@ -270,11 +270,11 @@ const Hero = () => {
             onClick={() => navigate("/")}
             loading="lazy"
           />
-        </div>
+        </div> */}
 
         {/* Main Heading */}
         <div className="mb-6">
-          <h1 className="text-3xl sm:text-5xl md:text-6xl 2xl:text-7xl font-bold mx-auto leading-tight text-white">
+          <h1 className="mt-9 text-3xl sm:text-5xl md:text-6xl 2xl:text-7xl font-bold mx-auto leading-tight text-white">
             Create amazing Content
             <br />
             with <span className="text-[#6c63ff]">Ai tools</span>

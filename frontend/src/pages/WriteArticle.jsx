@@ -6,7 +6,6 @@
 // import toast from "react-hot-toast";
 // import Markdown from 'react-markdown'
 
-
 // axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 
 // const WriteArticle = () => {
@@ -124,7 +123,7 @@
 //           <div className="mt-3 h-full overflow-y-scroll text-sm text-slate-600">
 //             {/* {content} */}
 //             <div className="reset-tw">
-//              <Markdown>{content?.content || "No content generated yet."}</Markdown> 
+//              <Markdown>{content?.content || "No content generated yet."}</Markdown>
 //             </div>
 //           </div>
 //         )}
@@ -141,7 +140,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useAuth } from "@clerk/clerk-react";
 import toast from "react-hot-toast";
-import Markdown from 'react-markdown';
+import Markdown from "react-markdown";
 
 axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 
@@ -182,8 +181,8 @@ const WriteArticle = () => {
     } catch (error) {
       toast.error(
         error?.response?.data?.message ||
-        error.message ||
-        "Something went wrong"
+          error.message ||
+          "Something went wrong"
       );
     }
     setLoading(false);
@@ -200,7 +199,7 @@ const WriteArticle = () => {
           <Sparkles className="w-6 text-[#4A74FF]" />
           <h1 className="text-xl font-semibold">Article Configuration</h1>
         </div>
-        
+
         <p className="mt-6 text-sm font-medium text-gray-300">Article Topic</p>
         <input
           onChange={(e) => setInput(e.target.value)}
@@ -210,7 +209,7 @@ const WriteArticle = () => {
           placeholder="The Future of Artificial intelligence is ...."
           required
         />
-        
+
         <p className="mt-4 text-sm font-medium text-gray-300">Article Length</p>
         <div className="mt-3 flex gap-3 flex-wrap sm:max-w-9/11">
           {articleLength.map((item, index) => (
@@ -227,7 +226,7 @@ const WriteArticle = () => {
             </span>
           ))}
         </div>
-        
+
         <br />
         <button
           disabled={loading}
@@ -253,13 +252,16 @@ const WriteArticle = () => {
           <div className="flex-1 flex justify-center items-center">
             <div className="text-sm flex flex-col items-center gap-5 text-gray-400">
               <Edit className="w-9 h-9 opacity-70" />
+              {/* <Edit className="w-9 h-9 opacity-70 z-0 relative" /> */}
               <p>Enter a topic and click 'Generate article' to get started</p>
             </div>
           </div>
         ) : (
           <div className="mt-3 h-full overflow-y-scroll text-sm text-gray-200">
             <div className="prose prose-invert max-w-none">
-              <Markdown>{content?.content || "No content generated yet."}</Markdown>
+              <Markdown>
+                {content?.content || "No content generated yet."}
+              </Markdown>
             </div>
           </div>
         )}

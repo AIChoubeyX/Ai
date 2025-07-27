@@ -251,7 +251,7 @@ const Hero = () => {
             text={[
               "Welcome to Creonix — Your Gateway to Smarter Content Creation",
               "Unleash the power of AI for your content workflow",
-              "Join 10k+ creators using Creonix",
+              // "Join 10k+ creators using Creonix",
             ]}
             typingSpeed={60}
             pauseDuration={2000}

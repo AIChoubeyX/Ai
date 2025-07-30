@@ -135,7 +135,7 @@
 // export default WriteArticle;
 
 import React from "react";
-import { Edit, Sparkles } from "lucide-react";
+import { Edit, Sparkles, Copy, Check } from "lucide-react";
 import { useState } from "react";
 import axios from "axios";
 import { useAuth } from "@clerk/clerk-react";
@@ -155,6 +155,8 @@ const WriteArticle = () => {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [content, setContent] = useState("");
+  // Copy functionality state
+  const [copied, setCopied] = useState(false);
 
   const { getToken } = useAuth();
 
@@ -186,6 +188,19 @@ const WriteArticle = () => {
       );
     }
     setLoading(false);
+  };
+
+  // Copy functionality
+  const handleCopyContent = async () => {
+    try {
+      await navigator.clipboard.writeText(content?.content || "");
+      setCopied(true);
+      toast.success("Article copied to clipboard!");
+      // Reset copied state after 2 seconds
+      setTimeout(() => setCopied(false), 2000);
+    } catch (error) {
+      toast.error("Failed to copy content");
+    }
   };
 
   return (
@@ -243,9 +258,32 @@ const WriteArticle = () => {
 
       {/* Right Column - Generated Content */}
       <div className="w-full max-w-lg p-4 bg-gray-800 rounded-lg flex flex-col border border-gray-700 min-h-96 max-h-[600px] shadow-lg">
-        <div className="flex items-center gap-3 text-white">
-          <Edit className="w-5 h-5 text-[#4A74FF]" />
-          <h1 className="text-xl font-semibold">Generated article</h1>
+        <div className="flex items-center justify-between text-white">
+          <div className="flex items-center gap-3">
+            <Edit className="w-5 h-5 text-[#4A74FF]" />
+            <h1 className="text-xl font-semibold">Generated article</h1>
+          </div>
+          
+          {/* Copy button - only show when content exists */}
+          {content && (
+            <button
+              onClick={handleCopyContent}
+              className="flex items-center gap-2 px-3 py-1.5 text-xs bg-gray-700 hover:bg-gray-600 border border-gray-600 rounded-md transition-colors"
+              title="Copy article content"
+            >
+              {copied ? (
+                <>
+                  <Check className="w-4 h-4 text-green-400" />
+                  Copied
+                </>
+              ) : (
+                <>
+                  <Copy className="w-4 h-4" />
+                  Copy
+                </>
+              )}
+            </button>
+          )}
         </div>
 
         {!content ? (

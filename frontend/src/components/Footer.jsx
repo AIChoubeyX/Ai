@@ -151,7 +151,7 @@
 import React from "react";
 import { assets } from "../assets/assets";
 import Particles from "./Particles"; // Make sure this path is correct
-import myPic from './assets/mypic.jpg';
+import myPic from "./assets/mypic.jpg";
 
 const cardsData = [
   {
@@ -316,8 +316,8 @@ const TestimonialFooter = () => {
     */}
               <img
                 className="w-32 h-32 rounded-full object-cover border-4 border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-shadow duration-300"
-                src={require("./assets/mypic.jpg")}
-                alt="Profile pic"
+                src={myPic}
+                alt="Profile Photo"
                 /*
         Profile photo styling:
         - w-32 h-32: Size 128px x 128px (can change to w-24 h-24, w-40 h-40, w-48 h-48)

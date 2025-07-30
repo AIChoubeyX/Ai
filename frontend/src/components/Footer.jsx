@@ -151,6 +151,7 @@
 import React from "react";
 import { assets } from "../assets/assets";
 import Particles from "./Particles"; // Make sure this path is correct
+import myPic from './assets/mypic.jpg';
 
 const cardsData = [
   {

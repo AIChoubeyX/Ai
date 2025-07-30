@@ -151,7 +151,7 @@
 import React from "react";
 import { assets } from "../assets/assets";
 import Particles from "./Particles"; // Make sure this path is correct
-import myPic from "./assets/mypic.jpg";
+import myPic from "../assets/mypic.jpg"; // FIXED: Changed from "./assets/" to "../assets/"
 
 const cardsData = [
   {
@@ -292,73 +292,73 @@ const TestimonialFooter = () => {
       {/* Footer Section */}
       <footer className="relative z-10 w-full px-4 sm:px-20 xl:px-32 py-24 mt-12 text-gray-400">
         <div className="flex flex-col md:flex-row justify-between gap-10 border-b border-gray-700 pb-10">
-          {/* Logo + Description */}
-          {/* About Me Section - Replace the logo + description section */}
+          
+          {/* About Me Section - Replaces the original logo + description */}
           <div className="md:max-w-md">
             {/* About Me Heading */}
             <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
               {/* 
-      Heading customization:
-      - text-2xl: Font size (can change to text-xl, text-3xl, text-4xl)
-      - font-bold: Font weight (can change to font-medium, font-semibold)
-      - mb-6: Bottom margin (can adjust to mb-4, mb-8, mb-10)
-      - Colors: text-gray-800 dark:text-white (customize as needed)
-    */}
+                Heading customization:
+                - text-2xl: Font size (can change to text-xl, text-3xl, text-4xl)
+                - font-bold: Font weight (can change to font-medium, font-semibold)
+                - mb-6: Bottom margin (can adjust to mb-4, mb-8, mb-10)
+                - Colors: text-gray-800 dark:text-white (customize as needed)
+              */}
               About Me
             </h2>
 
             {/* Profile Photo Container */}
             <div className="flex justify-center mb-6">
               {/* 
-      Profile photo wrapper:
-      - flex justify-center: Centers the image horizontally
-      - mb-6: Bottom margin (can adjust to mb-4, mb-8)
-    */}
+                Profile photo wrapper:
+                - flex justify-center: Centers the image horizontally
+                - mb-6: Bottom margin (can adjust to mb-4, mb-8)
+              */}
               <img
                 className="w-32 h-32 rounded-full object-cover border-4 border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-shadow duration-300"
                 src={myPic}
                 alt="Profile Photo"
                 /*
-        Profile photo styling:
-        - w-32 h-32: Size 128px x 128px (can change to w-24 h-24, w-40 h-40, w-48 h-48)
-        - rounded-full: Makes it circular
-        - object-cover: Ensures image fits well in circle
-        - border-4: Border thickness (can change to border-2, border-8)
-        - border-gray-200: Border color (customize as needed)
-        - shadow-lg: Drop shadow (can change to shadow-md, shadow-xl)
-        - hover:shadow-xl: Hover effect
-        - transition-shadow duration-300: Smooth transition
-        
-        IMPORTANT: Replace "/path-to-your-photo.jpg" with your actual image path
-      */
+                  Profile photo styling:
+                  - w-32 h-32: Size 128px x 128px (can change to w-24 h-24, w-40 h-40, w-48 h-48)
+                  - rounded-full: Makes it circular
+                  - object-cover: Ensures image fits well in circle
+                  - border-4: Border thickness (can change to border-2, border-8)
+                  - border-gray-200: Border color (customize as needed)
+                  - shadow-lg: Drop shadow (can change to shadow-md, shadow-xl)
+                  - hover:shadow-xl: Hover effect
+                  - transition-shadow duration-300: Smooth transition
+                  
+                  IMAGE PATH FIXED: Now using "../assets/mypic.jpg" (correct path)
+                */
               />
             </div>
 
             {/* About Me Description */}
             <p className="text-sm text-gray-600 dark:text-gray-300 text-center mb-6 leading-relaxed">
               {/* 
-      Description styling:
-      - text-sm: Font size (can change to text-base, text-lg)
-      - text-gray-600: Text color (customize as needed)
-      - text-center: Center aligned text
-      - mb-6: Bottom margin
-      - leading-relaxed: Line height for better readability
-      
-      CUSTOMIZE THIS TEXT WITH YOUR OWN DESCRIPTION:
-    */}
+                Description styling:
+                - text-sm: Font size (can change to text-base, text-lg)
+                - text-gray-600: Text color (customize as needed)
+                - text-center: Center aligned text
+                - mb-6: Bottom margin
+                - leading-relaxed: Line height for better readability
+                
+                CUSTOMIZE THIS TEXT WITH YOUR OWN DESCRIPTION:
+              */}
               "I'm a full-stack developer and AI enthusiast, currently studying
               B.Tech in AIML. I enjoy building smart, practical solutions that
-              use AI to make a real difference in people’s lives."
+              use AI to make a real difference in people's lives."
             </p>
 
             {/* Social Media Links */}
             <div className="flex justify-center space-x-4">
               {/* 
-      Social links container:
-      - flex: Horizontal layout
-      - justify-center: Center alignment
-      - space-x-4: Horizontal spacing between icons (can change to space-x-2, space-x-6)
-    */}
+                Social links container:
+                - flex: Horizontal layout
+                - justify-center: Center alignment
+                - space-x-4: Horizontal spacing between icons (can change to space-x-2, space-x-6)
+              */}
 
               {/* Instagram */}
               <a
@@ -366,17 +366,16 @@ const TestimonialFooter = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group"
-                /* REPLACE: Change "yourusername" to your actual Instagram username */
               >
                 <div className="w-10 h-10 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-md">
                   {/* 
-          Instagram icon styling:
-          - w-10 h-10: Size 40px x 40px (can change to w-8 h-8, w-12 h-12)
-          - bg-gradient-to-br: Instagram brand gradient
-          - rounded-full: Circular shape
-          - hover:scale-110: Hover zoom effect
-          - transition-transform: Smooth animation
-        */}
+                    Instagram icon styling:
+                    - w-10 h-10: Size 40px x 40px (can change to w-8 h-8, w-12 h-12)
+                    - bg-gradient-to-br: Instagram brand gradient
+                    - rounded-full: Circular shape
+                    - hover:scale-110: Hover zoom effect
+                    - transition-transform: Smooth animation
+                  */}
                   <svg
                     className="w-5 h-5 text-white"
                     fill="currentColor"
@@ -393,7 +392,6 @@ const TestimonialFooter = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group"
-                /* REPLACE: Change "yourusername" to your actual Twitter username */
               >
                 <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-md">
                   <svg
@@ -412,7 +410,6 @@ const TestimonialFooter = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group"
-                /* REPLACE: Change "yourusername" to your actual LinkedIn username */
               >
                 <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-md">
                   <svg
@@ -431,7 +428,6 @@ const TestimonialFooter = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group"
-                /* REPLACE: Change "yourusername" to your actual GitHub username */
               >
                 <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-md">
                   <svg
@@ -447,39 +443,39 @@ const TestimonialFooter = () => {
           </div>
 
           {/* 
-CUSTOMIZATION GUIDE:
+            CUSTOMIZATION GUIDE:
 
-1. REPLACE YOUR INFORMATION:
-   - Change the heading "About Me" to your preference
-   - Replace "/path-to-your-photo.jpg" with your actual photo path
-   - Update the description text with your own bio
-   - Replace all "yourusername" in social links with your actual usernames
+            1. PROFILE PHOTO SIZES:
+               - w-32 h-32 (current): 128px x 128px
+               - w-24 h-24: 96px x 96px (smaller)
+               - w-40 h-40: 160px x 160px (larger)
+               - w-48 h-48: 192px x 192px (extra large)
 
-2. SIZE ADJUSTMENTS:
-   - Profile photo: w-32 h-32 (128px) - can use w-24 h-24, w-40 h-40, w-48 h-48
-   - Social icons: w-10 h-10 (40px) - can use w-8 h-8, w-12 h-12
-   - Text sizes: text-2xl (heading), text-sm (description) - adjust as needed
+            2. SOCIAL ICON SIZES:
+               - w-10 h-10 (current): 40px x 40px
+               - w-8 h-8: 32px x 32px (smaller)
+               - w-12 h-12: 48px x 48px (larger)
 
-3. SPACING:
-   - mb-6: Bottom margins - can adjust to mb-4, mb-8, mb-10
-   - space-x-4: Social icon spacing - can use space-x-2, space-x-6
+            3. SPACING ADJUSTMENTS:
+               - mb-6: Bottom margins (can use mb-4, mb-8, mb-10)
+               - space-x-4: Social icon spacing (can use space-x-2, space-x-6)
 
-4. COLORS:
-   - Heading: text-gray-800 dark:text-white
-   - Description: text-gray-600 dark:text-gray-300
-   - Social icons have brand colors (Instagram gradient, Twitter black, etc.)
+            4. TEXT SIZES:
+               - text-2xl (heading): Can use text-xl, text-3xl, text-4xl
+               - text-sm (description): Can use text-base, text-lg
 
-5. RESPONSIVE DESIGN:
-   - The md:max-w-md ensures it fits well on all screen sizes
-   - All elements are responsive and will adapt to mobile/tablet/desktop
+            5. COLORS (customize as needed):
+               - Heading: text-gray-800 dark:text-white
+               - Description: text-gray-600 dark:text-gray-300
+               - Social icons use brand colors (Instagram gradient, etc.)
 
-6. HOVER EFFECTS:
-   - Profile photo: shadow grows on hover
-   - Social icons: scale up (hover:scale-110) on hover
-   - All transitions are smooth (duration-300)
+            6. HOVER EFFECTS:
+               - Profile photo: shadow grows (hover:shadow-xl)
+               - Social icons: scale up (hover:scale-110)
+               - All transitions: duration-300 for smoothness
 
-This component will work perfectly on all screen sizes and is fully customizable!
-*/}
+            This component is fully responsive and will work on all screen sizes!
+          */}
 
           {/* Links + Newsletter */}
           <div className="flex-1 flex flex-col sm:flex-row gap-16 md:justify-end">

@@ -315,8 +315,8 @@ const TestimonialFooter = () => {
     */}
               <img
                 className="w-32 h-32 rounded-full object-cover border-4 border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-shadow duration-300"
-                src="/path-to-your-photo.jpg"
-                alt="Your Name - Profile Photo"
+                src="/mypic.jpg"
+                alt="Ashutosh choubey"
                 /*
         Profile photo styling:
         - w-32 h-32: Size 128px x 128px (can change to w-24 h-24, w-40 h-40, w-48 h-48)
@@ -345,10 +345,7 @@ const TestimonialFooter = () => {
       
       CUSTOMIZE THIS TEXT WITH YOUR OWN DESCRIPTION:
     */}
-              Passionate full-stack developer with expertise in modern web
-              technologies. I love creating innovative solutions and sharing
-              knowledge with the community. Always excited to work on
-              challenging projects and learn new technologies.
+              "I'm a full-stack developer and AI enthusiast, currently studying B.Tech in AIML. I enjoy building smart, practical solutions that use AI to make a real difference in people’s lives."
             </p>
 
             {/* Social Media Links */}
@@ -362,7 +359,7 @@ const TestimonialFooter = () => {
 
               {/* Instagram */}
               <a
-                href="https://instagram.com/yourusername"
+                href="https://instagram.com/choubey_jii1"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group"
@@ -389,7 +386,7 @@ const TestimonialFooter = () => {
 
               {/* Twitter/X */}
               <a
-                href="https://twitter.com/yourusername"
+                href="https://twitter.com/choubeyjii_1"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group"
@@ -408,7 +405,7 @@ const TestimonialFooter = () => {
 
               {/* LinkedIn */}
               <a
-                href="https://linkedin.com/in/yourusername"
+                href="https://linkedin.com/in/ashutosh-choubey-46695928b"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group"
@@ -427,7 +424,7 @@ const TestimonialFooter = () => {
 
               {/* GitHub */}
               <a
-                href="https://github.com/yourusername"
+                href="https://github.com/AIChoubeyX"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group"

@@ -315,8 +315,8 @@ const TestimonialFooter = () => {
     */}
               <img
                 className="w-32 h-32 rounded-full object-cover border-4 border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-shadow duration-300"
-                src="/mypic.jpg"
-                alt="Ashutosh choubey"
+                src="./mypic.jpg"
+                alt="profile pic"
                 /*
         Profile photo styling:
         - w-32 h-32: Size 128px x 128px (can change to w-24 h-24, w-40 h-40, w-48 h-48)

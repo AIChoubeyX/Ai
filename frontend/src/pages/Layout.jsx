@@ -308,8 +308,12 @@ const Layout = () => {
 
   return user ? (
     <div className="flex flex-col items-start justify-start h-screen bg-gray-900">
-      {/* CHANGED: Reduced horizontal padding on mobile from px-8 to px-4 sm:px-8 */}
-      <nav className="w-full px-4 sm:px-8 min-h-14 flex items-center justify-between border-b border-gray-700 bg-gray-800/90 backdrop-blur-sm">
+      {/* CHANGED: Added left margin to navbar to account for sidebar width */}
+      <nav className={`w-full px-4 sm:px-8 min-h-14 flex items-center justify-between border-b border-gray-700 bg-gray-800/90 backdrop-blur-sm transition-all duration-300 ease-in-out ${
+        sidebar 
+          ? 'ml-60 max-sm:ml-0' // Push navbar right when sidebar is open on desktop
+          : 'ml-0'
+      }`}>
         {/* CHANGED: Added right margin for mobile spacing - mr-3 sm:mr-0 */}
         <div className="flex-shrink-0 mr-3 sm:mr-0">
           <img
@@ -372,18 +376,20 @@ const Layout = () => {
         </div>
       </nav>
 
-      <div className="flex-1 w-full flex h-[calc(100vh-64px)]">
+      {/* CHANGED: Simplified container structure */}
+      <div className="flex-1 w-full relative">
         <Sidebar sidebar={sidebar} setSidebar={setSidebar} />
-        {/* CHANGED: Added left margin to prevent content hiding behind sidebar and overlay for mobile */}
-        <div className={`flex-1 bg-gray-900 transition-all duration-300 ease-in-out ${
+        
+        {/* CHANGED: Main content with proper margin for both navbar and sidebar spacing */}
+        <div className={`h-full bg-gray-900 transition-all duration-300 ease-in-out ${
           sidebar 
-            ? 'ml-60 max-sm:ml-0' // 240px margin for desktop, no margin on mobile when sidebar is open
+            ? 'ml-60 max-sm:ml-0' // 240px margin for desktop, no margin on mobile
             : 'ml-0'
         }`}>
           <Outlet />
         </div>
         
-        {/* CHANGED: Added overlay for mobile when sidebar is open */}
+        {/* CHANGED: Mobile overlay */}
         {sidebar && (
           <div 
             className="fixed inset-0 bg-black bg-opacity-50 z-40 sm:hidden"

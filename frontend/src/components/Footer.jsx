@@ -157,29 +157,29 @@ const cardsData = [
   {
     image:
       "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200",
-    name: "Briar Martin",
-    handle: "@neilstellar",
+    name: "Rohan singh",
+    handle: "@rohanwrites",
     date: "April 20, 2025",
   },
   {
     image:
       "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200",
-    name: "Avery Johnson",
-    handle: "@averywrites",
+    name: "Himanshu Verma",
+    handle: "@himanshuverma",
     date: "May 10, 2025",
   },
   {
     image:
       "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=200&auto=format&fit=crop&q=60",
-    name: "Jordan Lee",
-    handle: "@jordantalks",
+    name: "Sacchi singh",
+    handle: "@Sacchitalks",
     date: "June 5, 2025",
   },
   {
     image:
       "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=200&auto=format&fit=crop&q=60",
-    name: "Avery Johnson",
-    handle: "@averywrites",
+    name: "Chiro",
+    handle: "@chirthoughts",
     date: "May 10, 2025",
   },
 ];
@@ -296,7 +296,7 @@ const TestimonialFooter = () => {
           {/* About Me Section - Replaces the original logo + description */}
           <div className="md:max-w-md">
             {/* About Me Heading */}
-            <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
+            <h2 className="text-xl font-bold mb-6 text-gray-800 dark:text-white">
               {/* 
                 Heading customization:
                 - text-2xl: Font size (can change to text-xl, text-3xl, text-4xl)

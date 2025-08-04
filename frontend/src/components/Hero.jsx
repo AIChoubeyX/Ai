@@ -275,9 +275,9 @@ const Hero = () => {
         {/* Main Heading */}
         <div className="mb-6">
           <h1 className="mt-9 text-3xl sm:text-5xl md:text-6xl 2xl:text-7xl font-bold mx-auto leading-tight text-white">
-            Stop Struggling to Create.
+            Create Beyond Limits
             <br />
-            Start Building with <span className="text-[#6c63ff]">Creonix</span>
+            with <span className="text-[#6c63ff]">Creonix</span>
           </h1>
           <p className="mt-4 max-w-xs sm:max-w-lg 2xl:max-w-xl mx-auto text-sm sm:text-base text-gray-400">
             Transform your content creation with our suite of premium Ai tools.
